@@ -1,0 +1,18 @@
+{
+    "builtin": "True",
+    "default_enabled": "True",
+    "type": "extension",
+    "rocket_mode_compatible": "True",
+    "name": "pyDelpro",
+    "description": "IronPython Scripts for Autodesk Revit",
+    "author": "Simone Behling",
+    "author_profile": "--",
+    "url": "--",
+    "website": "--",
+    "image": "",
+    "templates": {
+        "author": "S-Behling",
+        "docpath": "--"
+    },
+    "dependencies": []
+}
