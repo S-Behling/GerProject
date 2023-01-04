@@ -1,0 +1,5 @@
+layout:
+ - TransferVal[title:TransferVal]
+ - TransferPar[title:TransferPar]
+ - AddPar[title:AddPar]
+
