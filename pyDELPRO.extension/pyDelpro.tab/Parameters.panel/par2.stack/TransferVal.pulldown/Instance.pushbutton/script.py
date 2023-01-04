@@ -118,9 +118,10 @@ for j in EleCategoria:
     parametros = j.Parameters
     parametro = j.LookupParameter(parametroOrigem)
     parametroDestino = j.LookupParameter(parametroDes)
+    print(parametro)
     if (str(parametro)) == "None":
-        val = "not val"
-        parametroDestino.Set(val)
+        #val = "not val"
+        #parametroDestino.Set(val)
         Sparametro.append(j)
 
     if (str(parametro)) != "None":

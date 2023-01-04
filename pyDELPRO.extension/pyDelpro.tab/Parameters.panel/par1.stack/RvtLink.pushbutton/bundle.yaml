@@ -1,0 +1,5 @@
+tooltip: >-
+ Pega valores de parametros de outros arquivos e insere em parametros presentes no projeto ativo.
+  
+author: >-
+  Simone Behling

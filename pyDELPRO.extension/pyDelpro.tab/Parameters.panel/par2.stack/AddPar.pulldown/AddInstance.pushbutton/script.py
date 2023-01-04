@@ -129,6 +129,16 @@ def confereInput(inputUser, input, msg):
         
     return inputUser
 
+#PRINTA INFORMACOES DE INPUT
+def RelatorioInputs(IputVal, par, cat, parRest, valRest):
+
+    filtro = "<"
+    if YesNo == "s":
+        filtro = ("que possuiam o parametro  >" + parRest + "<  igual a  >" + valRest + "<")
+
+    print("***************RELATORIO DE INPUTS******************")
+    print("O valor  >" + IputVal + "<  foi aplicado ao parametro  >" + par + "<  em todos os(as)  >" + cat + filtro)
+
 #SELECIONA PARAMETRO
 #def catParametro(par):
 #__revit__.ActiveUIDocument.Document
@@ -168,7 +178,6 @@ for i in categorias:
 print(lista_Categorias)
 #USUARIO ESCOLHE A CATEGORIA (Tem que escrever certo o nome)
 categoria = raw_input("Qual a categoria do elemento?")
-print(categoria)
 
 #SE CATEGORIA DA LISTA = CATEGORIA ESCOLHIDA PELO USUARIO
 count = 5
@@ -182,6 +191,7 @@ for i in range(0,count):
     else:
         break
 
+print("> "+ categoria)
 #IMPRIME ELEMENTOS DA CATEGORIA
 #for j in EleCategoria:
 #    print("ELEMENTOS:")
@@ -200,9 +210,8 @@ print("] \n \n")
 msg = "Algum filtro aplicado aos elementos? \n sim -> s \n nao -> n"
 YesNo = raw_input(msg)
 YesNo = confereInput(YesNo, 0, msg)
+print("> "+ YesNo)
 
-
-print(YesNo)
 
 if YesNo == "s":
     print("ex1 > elementos c/ parametro: \n Level = PAV 1 \n ex2> elementos com parametro: \n Type = Tubos pvc Tigre")
@@ -211,16 +220,19 @@ if YesNo == "s":
     msg = "\nQual o parametro que voce deseja usar como restricao?"
     ParRestricao = raw_input(msg)
     ParRestricao = confereInput(ParRestricao, 3, msg)
+    print("> "+ ParRestricao)
     ValRestricao = raw_input("Qual o valor x que esse parametro devera POSSUIR ou NAO POSSUIR")
+    print("> "+ ValRestricao)
     tipoRestricao = raw_input("Todos os elementos que possuam o parametro com um valor igual a x (valor informado) -> 1 \
         \n Todos os elementos que NAO possuam o parametro com um valor diferente de x (valor informado) -> 0")
     tipoRestricao = confereInput(tipoRestricao, 1, msg)
+    print("> "+ tipoRestricao)
 
     ElesCategoria = []
     for j in EleCategoria:
         GetRestricao = j.LookupParameter(ParRestricao)
         GetValor = GetRestricao.AsValueString()
-        valor = ajustaTipo(GetRestricao, GetValor)
+        #valor = ajustaTipo(GetRestricao, GetValor)
         if tipoRestricao == "1":
             if GetValor == ValRestricao:
                 ElesCategoria.append(j)
@@ -234,7 +246,9 @@ else:
 msg = "qual o parametro que voce deseja inserir um valor?"
 parametroEdit = raw_input(msg)
 parametroEdit = confereInput(parametroEdit, 3, msg)
+print("> "+parametroEdit)
 valor = raw_input("digite o valor a ser inserido")
+print("> " + valor)
 
 s = Transaction(doc, "search")
 s.Start()
@@ -267,6 +281,8 @@ print("elementos que nao possuem o parametro")
 #Finaliza edicao
 s.Commit()
 s.Dispose()
+
+RelatorioInputs(valor, parametroEdit, categoria, ParRestricao, ValRestricao)
 
 output = script.get_output()
 output.close()
