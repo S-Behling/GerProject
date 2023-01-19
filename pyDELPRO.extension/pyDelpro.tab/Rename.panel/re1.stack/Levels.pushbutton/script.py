@@ -59,7 +59,10 @@ def ajustaTipo(par, val):
         valor = str(val)
 
     if str(par.StorageType) == "Integer":
-        valor = int(val)
+        if str(val) == "Yes" or str(val) == "No":
+            valor = val
+        else:
+            valor = int(val)
 
     if str(par.StorageType) == "Double":
         valor = float(val)
@@ -177,12 +180,12 @@ YesNo = confereInput(YesNo, 0, msg)
 print(YesNo)
 
 if YesNo == "s":
-    print("ex1 > elementos c/ parametro: \n Level = PAV 1 \n ex2> elementos com parametro: \n Type = Tubos pvc Tigre")
-    print("Level, Type (parametro de restricao)")
-    print("PAV 1, Tubos pvc Tigre (valor do parametro)")
     msg = "\nQual o parametro que voce deseja usar como restricao?"
+    print("exemplo de parametro de restricao: " + NomesParametros[1])
     ParRestricao = raw_input(msg)
     ParRestricao = confereInput(ParRestricao, 3, msg)
+    PrintVal = Pavimentos[1].LookupParameter(ParRestricao)
+    print("Exemplo de valor contido nesse parametro: " + PrintVal.AsValueString())
     ValRestricao = raw_input("Qual o valor x que esse parametro devera POSSUIR ou NAO POSSUIR")
     tipoRestricao = raw_input("Todos os elementos que possuam o parametro com um valor igual a x (valor informado) -> 1 \
         \n Todos os elementos que NAO possuam o parametro com um valor diferente de x (valor informado) -> 0")

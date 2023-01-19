@@ -1,0 +1,9 @@
+<RCC>
+  <qresource prefix="Icons">
+    <file>trash.png</file>
+    <file>right.png</file>
+    <file>folder.png</file>
+    <file>icon.png</file>
+    <file>dropdown.png</file>
+  </qresource>
+</RCC>

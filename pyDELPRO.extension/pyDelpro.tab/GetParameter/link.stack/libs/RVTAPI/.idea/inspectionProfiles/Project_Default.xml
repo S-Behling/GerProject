@@ -1,0 +1,67 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyBroadExceptionInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyPep8Inspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="E722" />
+          <option value="E402" />
+          <option value="E741" />
+          <option value="W292" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8NamingInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="N802" />
+          <option value="N806" />
+          <option value="N803" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="Autodesk" />
+          <option value="APIFUNC.FilteredElementCollector" />
+          <option value="clr.ImportExtensions" />
+          <option value="Revit" />
+          <option value="APIFUNC.UnwrapElement" />
+          <option value="APIFUNC.lista" />
+          <option value="APIFUNC.docelevations" />
+          <option value="APIFUNC.elementlvs" />
+          <option value="APIFUNC.collector" />
+          <option value="APIFUNC.Level" />
+          <option value="APIFUNC.RevitLinkInstance" />
+          <option value="APIFUNC.ViewPlan" />
+          <option value="APIFUNC.ElementId" />
+          <option value="APIFUNC.Document" />
+          <option value="APIFUNC.UnitType" />
+          <option value="APIFUNC.UnitUtils" />
+          <option value="APIFUNC.UIunit" />
+          <option value="APIFUNC.BoundingBoxXYZ" />
+          <option value="APIFUNC.XYZ" />
+          <option value="APIFUNC.Transform" />
+          <option value="APIFUNC.ViewSection" />
+          <option value="clr.Reference" />
+          <option value="APIFUNC.IntersectionResultArray" />
+          <option value="APIFUNC.Line" />
+          <option value="APIFUNC.SetComparisonResult" />
+          <option value="APIFUNC.BuiltInCategory" />
+          <option value="APIFUNC.PointDistanceTo" />
+          <option value="APIFUNC.ScheduleSheetInstance" />
+          <option value="APIFUNC.BoundingBox" />
+          <option value="APIFUNC.Family" />
+          <option value="APIFUNC.ElementTransformUtils" />
+          <option value="System" />
+          <option value="APIFUNC.ElementMulticategoryFilter" />
+          <option value="APIFUNC.NavisworksCoordinates" />
+          <option value="APIFUNC.NavisworksExportScope" />
+          <option value="APIFUNC.NavisworksExportOptions" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

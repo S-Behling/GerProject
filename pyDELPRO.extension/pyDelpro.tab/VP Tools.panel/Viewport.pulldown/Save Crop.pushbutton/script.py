@@ -6,10 +6,12 @@ Save crop boundary of a Viewport
 Saves the cropping boundary of the active viewport for reuse.
 
 
-TESTADO: RVT 2020
+TESTED REVIT API: 2020
 
+github.com/ejs-ejs
 --------------------------------------------------------
 RevitPythonWrapper: revitpythonwrapper.readthedocs.io
+pyRevit: github.com/eirannejad/pyRevit
 
 """
 

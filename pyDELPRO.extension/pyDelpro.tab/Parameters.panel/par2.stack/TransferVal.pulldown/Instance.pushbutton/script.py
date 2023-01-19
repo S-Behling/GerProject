@@ -50,6 +50,10 @@ def catCategorias(cat):
                                             .OfCategoryId(i.Id).WhereElementIsNotElementType().ToElements()
             return EleCategoria
 
+def printCat(eles):
+    for e in eles:
+        print(e.Name)
+
 #SELECIONA PARAMETRO
 #def catParametro(par):
 #__revit__.ActiveUIDocument.Document
@@ -76,12 +80,14 @@ for i in categorias:
     #'Cable Trays', 'Materials', 'Specialty Equipment', 'Levels', 'Security Devices', 'Railings', 'Viewports', 'Structural Beam Systems', 'Views', 'Sheets', 'Casework', 
     #'View Titles', 'Mechanical Equipment', 'Stairs'
     if i.Name == "Cable Trays" or i.Name == "Cable Tray Fittings" or i.Name == "Communication Devices" or i.Name == "Conduits" or i.Name == "Conduit Fittings"\
-    or i.Name == "Data Devices" or i.Name == "Electrical Equipment" or i.Name == "Electrical Fixtures" or i.Name == "Pipes" or i.Name == "Pipe Fittings" or i.Name == "Structural Framing":
+    or i.Name == "Data Devices" or i.Name == "Electrical Equipment" or i.Name == "Electrical Fixtures" or i.Name == "Pipes" or i.Name == "Pipe Fittings" or i.Name == "Structural Framing"\
+    or i.Name == "Pipe Accessories":
         lista_Categorias.append(i.Name)
         par_categorias.append(i)
 
 #IMPRIME CATEGORIAS USUAIS
 print(lista_Categorias)
+#printCat(categorias)
 #USUARIO ESCOLHE A CATEGORIA (Tem que escrever certo o nome)
 categoria = raw_input("Qual a categoria do elemento?")
 print(categoria)
@@ -118,7 +124,7 @@ for j in EleCategoria:
     parametros = j.Parameters
     parametro = j.LookupParameter(parametroOrigem)
     parametroDestino = j.LookupParameter(parametroDes)
-    print(parametro)
+    #print(parametro)
     if (str(parametro)) == "None":
         #val = "not val"
         #parametroDestino.Set(val)
@@ -145,35 +151,35 @@ for j in EleCategoria:
             #valor = float(valor)
             #print("Double")
             #print(valor)
-            
-            if str(parametroDestino.StorageType) == "String":
-                valor = parametro.AsValueString()
-                #print(valor)
-                #print("string")
-                parametroDestino.Set(str(valor))
-                #print(parametroDestino.AsValueString())
-                #print(parametroDestino)
+            if parametroDestino.AsValueString() != "not val":
+                if str(parametroDestino.StorageType) == "String":
+                    valor = parametro.AsValueString()
+                    #print(valor)
+                    #print("string")
+                    parametroDestino.Set(str(valor))
+                    #print(parametroDestino.AsValueString())
+                    #print(parametroDestino)
 
-            if str(parametroDestino.StorageType) == "Integer":
-                valor = parametro.AsValueString()
-                valor = int(valor)
-                print("inteiro")
-                parametroDestino.Set(valor)
+                if str(parametroDestino.StorageType) == "Integer":
+                    valor = parametro.AsValueString()
+                    valor = int(valor)
+                    #print("inteiro")
+                    parametroDestino.Set(valor)
 
-            if str(parametroDestino.StorageType) == "Double":
-                valor = parametro.AsValueString()
-                #valor= int(valor)
-                valor = float(valor)
-                print("Double")
-                print(valor)
-                parametroDestino.Set(valor)
+                if str(parametroDestino.StorageType) == "Double":
+                    valor = parametro.AsValueString()
+                    #valor= int(valor)
+                    valor = float(valor)
+                    #print("Double")
+                    #print(valor)
+                    parametroDestino.Set(valor)
 
-            if str(parametroDestino.StorageType) == "ElementId":
-                valor = parametro.AsValueString()
-                valor = int(valor)
-                print("Id")
-                print(valor)
-                parametroDestino.Set(valor)
+                if str(parametroDestino.StorageType) == "ElementId":
+                    valor = parametro.AsValueString()
+                    valor = int(valor)
+                    print("Id")
+                    print(valor)
+                    parametroDestino.Set(valor)
 
             TransactionManager.Instance.ForceCloseTransaction()
 

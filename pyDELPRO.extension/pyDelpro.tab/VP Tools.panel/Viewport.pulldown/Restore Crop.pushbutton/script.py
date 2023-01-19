@@ -1,11 +1,15 @@
 """
 Restore ViewPort Crop
+Restore the saved crop boundary to a Viewport
 
 
-TESTADO: RVT 2020
+TESTED REVIT API: 2020
+
+github.com/ejs-ejs
 
 --------------------------------------------------------
 RevitPythonWrapper: revitpythonwrapper.readthedocs.io
+pyRevit: github.com/eirannejad/pyRevit
 
 """
 

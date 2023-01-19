@@ -139,6 +139,8 @@ print("Parametros de tipo disponiveis:")
 parametros = EleCategoria[1].Parameters
 for x in parametros:
         print(x.Definition.Name)
+        print(x.Id)
+        print(x.StorageType)
 
 print("===============================")
 
@@ -183,8 +185,8 @@ for j in Categoria:
 
         if nomeTipo == Tipo:
             if (str(parametro)) == "None":
-                val = "not val"
-                parametroDestino.Set(val)
+                #val = "not val"
+                #parametroDestino.Set(val)
                 Sparametro.append(j)
 
             if (str(parametro)) != "None":
@@ -201,34 +203,39 @@ for j in Categoria:
                     #Inicia Edicao
                     TransactionManager.Instance.ForceCloseTransaction()
                     #TransactionManager.Instance.EnsureInTransaction(doc)
-                    
-                    if str(parametroDestino.StorageType) == "String":
-                        valor = parametro.AsValueString()
-                        #print(valor)
-                        #print("string")
-                        parametroDestino.Set(str(valor))
-                        #print(parametroDestino.AsValueString())
-                        #print(parametroDestino)
 
-                    if str(parametroDestino.StorageType) == "Integer":
-                        valor = parametro.AsValueString()
-                        valor = int(valor)
-                        print("inteiro")
-                        parametroDestino.Set(valor)
+                    if parametroDestino.AsValueString() != "not val":
+                        
+                        print(parametroDestino.StorageType)
+                        #print(parametroOrigem.AsValueString)
 
-                    if str(parametroDestino.StorageType) == "Double":
-                        valor = parametro.AsValueString()
-                        valor = float(valor)
-                        print("Double")
-                        print(valor)
-                        parametroDestino.Set(valor)
+                        if str(parametroDestino.StorageType) == "String":
+                            valor = parametro.AsValueString()
+                            #print(valor)
+                            #print("string")
+                            parametroDestino.Set(str(valor))
+                            #print(parametroDestino.AsValueString())
+                            #print(parametroDestino)
 
-                    if str(parametroDestino.StorageType) == "ElementId":
-                        valor = parametro.AsValueString()
-                        valor = int(valor)
-                        print("Id")
-                        print(valor)
-                        parametroDestino.Set(valor)
+                        if str(parametroDestino.StorageType) == "Integer":
+                            valor = parametro.AsValueString()
+                            valor = int(valor)
+                            print("inteiro")
+                            parametroDestino.Set(valor)
+
+                        if str(parametroDestino.StorageType) == "Double":
+                            valor = parametro.AsValueString()
+                            valor = float(valor)
+                            print("Double")
+                            print(valor)
+                            parametroDestino.Set(valor)
+
+                        if str(parametroDestino.StorageType) == "ElementId":
+                            valor = parametro.AsValueString()
+                            valor = int(valor)
+                            print("Id")
+                            print(valor)
+                            parametroDestino.Set(valor)
 
                     TransactionManager.Instance.ForceCloseTransaction()
 

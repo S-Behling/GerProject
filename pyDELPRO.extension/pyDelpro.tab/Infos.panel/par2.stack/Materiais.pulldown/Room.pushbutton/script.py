@@ -63,7 +63,7 @@ def catCategorias(cat, tipo):
             if tipo == 2:  
                 Elementos = FamilyType(doc)
 
-            print (Elementos)
+            #print (Elementos)
             return Elementos
 
 
@@ -216,17 +216,32 @@ msg = ("Rooms ou Spaces?")
 RoomSpace = raw_input(msg)
 Rooms = catCategorias(RoomSpace, 0)
 
-#print(RoomSpace + " no modelo:")
-#for i in Rooms:
+print(RoomSpace + " no modelo:")
+for i in Rooms:
     #print(i)
-    #nome = i.LookupParameter("Name")
-    #print(nome.AsValueString())
+    nome = i.LookupParameter("Name")
+    print(nome.AsValueString())
+
+msg = "Qual o nome do Room?"
+NomeRoom = raw_input(msg)
 
 TodasCat = doc.Settings.Categories
-TodasCategorias = GerProject.FiltraEle(TodasCat)
+
+msg = "Todas as categorias de elementos estruturais? sim ou nao?"
+TodasUma = raw_input(msg)
+if TodasUma == "sim":
+    TodasCategorias = GerProject.FiltraEle(TodasCat)
+else:    
+    msg = "Entao qual categoria tu quer?"
+    print("Structural Columns?")
+    nomeCat = raw_input(msg)
+    TodasCategorias = GerProject.FiltraEleCat(TodasCat, nomeCat)
+
 opt = Options()
 
 VolumeTotal = 0
+nmrPilares = 0
+ListaPilaresProj = []
 ListaVol = []
 ListaIds = []
 
@@ -234,7 +249,7 @@ InSide = []
 #PEGA ID DOS MATERIAIS
 for r in Rooms:
     nomeR = r.LookupParameter("Name")
-    if nomeR.AsValueString() == "area":
+    if nomeR.AsValueString() == NomeRoom: #area
         GeometriaRoom = r.get_Geometry(opt) 
         geoRoom = GeometriaRoom.GetBoundingBox()
         GeoCentroRoom = (geoRoom.Max) - (geoRoom.Min)
@@ -284,7 +299,10 @@ for r in Rooms:
                                 if ponto.Z <= ((geoRoom.Max).Z) and ponto.Z >= ((geoRoom.Min).Z):
                                     #print("Z")
                                     InSide.append(i)
-                                    #i = DelSubelements(i)
+                                    tituloPilar = i.LookupParameter("Titulo")
+                                    nomePilar = tituloPilar.AsValueString()
+                                    nmrPilares = nmrPilares + 1
+                                    ListaPilaresProj.append(nomePilar)
                                     volumes = GerProject.calculateVolume(i)
                                     #print("----")
                                     #print(i.Id)
@@ -297,11 +315,14 @@ for r in Rooms:
             nomeC = None
             instancias = None
                         
-print("total")
-print(InSide)
+print("Volume total:")
+#print(InSide)
 print(VolumeTotal)
-print("convertido")
-vol = VolumeTotal/3531
+
+print("convertido p/ m3")
+vol = VolumeTotal/35.347
 print(vol)
-#print(ListaVol)
-#print(ListaIds)
+
+print("Pilares na projecao:")
+print(ListaPilaresProj)
+print(nmrPilares)
